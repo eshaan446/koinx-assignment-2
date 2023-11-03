@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Cleave from "cleave.js/react";
 import '../App.css'
 import { taxrates, countries, flags, years, taxshow} from '../data/reqdata';
+import Faq from './Faq';
 const Calculator = () => {
     const[purchase,setpurchase]=useState("");
     const[sale,setsale]=useState("");
@@ -149,6 +150,7 @@ const Calculator = () => {
           </div>
         </div>
       </div>
+      <Faq/>
       </>
     )
 }
