@@ -32,9 +32,9 @@ const years = ["FY 2023-24", "FY 2022-23"];
 const taxshow=[ "10%","10%","20%","20%"];
 
 function App() {
-  const[purchase,setpurchase]=useState();
-  const[sale,setsale]=useState();
-  const [expense,setexpense]=useState();
+  const[purchase,setpurchase]=useState("");
+  const[sale,setsale]=useState("");
+  const [expense,setexpense]=useState("");
   const [countryind,setcountryind]=useState(0);
   const[taxind,settaxind]=useState(0);
   const [capitalgains,setcapitalgains]=useState(0);
@@ -44,16 +44,18 @@ function App() {
     return parseFloat(formattedValue.replace(/,/g, ""));
   };
   const calculate=()=>{
-    let saleprice = getNumericValue(sale);
-    let purchaseprice = getNumericValue(purchase);
-    let expenseprice = getNumericValue(expense);
-    let x=purchaseprice-(saleprice+expenseprice);
-    setcapitalgains(x);
-    if(taxind===0 || taxind===1){
-      setfinaltax((10*capitalgains)/100);
-    }else{
-      setfinaltax((20*capitalgains)/100);
-    }
+    if(sale!=="" && purchase !=="" && expense!==""){
+      let saleprice = getNumericValue(sale);
+      let purchaseprice = getNumericValue(purchase);
+      let expenseprice = getNumericValue(expense);
+      let x=purchaseprice-(saleprice+expenseprice);
+      setcapitalgains(x);
+      if(taxind===0 || taxind===1){
+        setfinaltax((10*capitalgains)/100);
+      }else{
+        setfinaltax((20*capitalgains)/100);
+      }
+  }
   }
   
   return(
